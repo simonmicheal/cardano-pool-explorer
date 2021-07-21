@@ -11,10 +11,10 @@ import { PoolModel } from './models/pool-model';
 })
 export class AppComponent {
 
-  pools: PoolModel[];
+  pools: PoolModel[] = [];
   isCollapsed = false;
 
-  pageSize: number = 15;
+  pageSize: number = 10;
   page: number = 1;
 
   openById = {};
@@ -26,6 +26,13 @@ export class AppComponent {
   constructor(private svc: ExplorerService) { }
 
   ngOnInit(): void {
+    this.GetPools(true);
+  }
+
+  private GetPools(reset: boolean) {
+
+    if (reset)
+      this.page = 1;
 
     //Subscription for retreiving pool data
     this.svc.getPools(this.page).subscribe((e: PoolModel[]) => {
@@ -38,14 +45,19 @@ export class AppComponent {
       this.pools.forEach((p) => {
         this.svc.getPool(p).subscribe((e) => {
           p.poolMeta = e;
-        })
-      })
-    })
+        });
+      });
+    });
   }
 
   accordianClick(event) {
     //Add pool-id to array and note open or close
     this.openById[event.panelId] = event.nextState;
+  }
+
+  //Page changed event
+  onPageChanged(pageNumber: number) {
+    this.page = pageNumber;
   }
 
   //Clean up subscriptions

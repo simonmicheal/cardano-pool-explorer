@@ -1,9 +1,8 @@
 import { ModelBase } from "./model-base";
 
-export class PoolModel extends ModelBase {
+export class PoolModel {
 
   constructor(s?: any) {
-    super(s);
 
     if (s) {
       this.poolId = s;
