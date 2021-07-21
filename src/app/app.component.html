@@ -1,6 +1,6 @@
-<div stlye="height:100%;">
+<div>
   <nav class="navbar navbar-header navbar-header-fixed">
-    <a class="navbar-brand" href="#">Cardano</a>
+    <a class="navbar-brand" href="#">&nbsp;&nbsp;Cardano</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
       aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -88,20 +88,24 @@
                   </div>
                 </div>
               </div>
-              <div class="spinner-border" role="status">
-                <span class="sr-only"></span>
-              </div>
             </ng-template>
           </ngb-panel>
         </ngb-accordion>
-
       </div>
     </div>
 
-    <ngb-pagination *ngIf="pools?.length > 0" [(page)]="page" [pageSize]="pageSize" [collectionSize]="pools.length">
+    <ngb-pagination (pageChange)="onPageChanged($event)" *ngIf="pools?.length > 0" [(page)]="page" [pageSize]="pageSize"
+      [collectionSize]="100">
     </ngb-pagination>
 
   </div>
+
+  <div class="spinner-container" *ngIf="pools?.length == 0">
+    <div class="spinner-border">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+
   <footer class="footer d-flex align-items-end">
     <div class="d-flex flex-column" style="height:70px">
       <p class="text-xs-center">© Copyright 2019. All rights reserved.</p>

@@ -18,6 +18,18 @@
     text-decoration-line: none;
 }
 
+.spinner-border{
+    width:5rem;
+    height:5rem;
+}
+
+.spinner-container{
+    display: flex;
+    justify-content: center;
+    height: 20em;
+    align-items: center;
+}
+
 .footer {
     border-top-color: transparent;
     box-shadow: 0 0 25px rgb(26 108 225 / 10%);
