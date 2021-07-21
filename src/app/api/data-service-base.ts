@@ -1,17 +1,25 @@
-import { HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { HttpErrorResponse } from "@angular/common/http";
+import { Injector } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { EMPTY } from "rxjs";
+import { NgbdModalContent } from "../components/modal.component";
 
 export class DataServiceBase {
 
-    constructor() {
+    static inject: Injector;
+    
+    //Add modal service
+    constructor(injector: Injector) {
+        DataServiceBase.inject = injector;
     }
 
     /**
      * Generic error handling method
      * @param {error} error response 
     */
-
     handleGenericHttpError(error: HttpErrorResponse) {
+
+        let modalService = DataServiceBase.inject.get(NgbModal);
 
         if (error.status === 500) {
             // 500 message
@@ -20,10 +28,13 @@ export class DataServiceBase {
 
         if (error.status === 400) {
             console.log(`error.message: ${error.error.message} received`);
+            //open new error dialog
+           
             throw ("error thrown in service");
         }
 
         // some other status, return empty data
+        modalService.open(NgbdModalContent);
         console.log(`${error.status} status code rec'd`);
         return EMPTY;
     }
