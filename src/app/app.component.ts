@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgbAccordion } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { finalize, takeUntil } from 'rxjs/operators';
 import { ExplorerService } from './api/services';
 import { PoolModel } from './models/pool-model';
 
@@ -44,6 +44,7 @@ export class AppComponent {
 
     //Subscription for retreiving pool data
     this.svc.getPools(this.page).pipe(
+      takeUntil(this.$destroy),
       finalize(() => { this.isBusy = false; })
     ).subscribe((e: PoolModel[]) => {
 
@@ -62,6 +63,7 @@ export class AppComponent {
     let pool = this.pools.find((e) => e.poolId == poolId);
 
     this.svc.getPool(pool).pipe(
+      takeUntil(this.$destroy),
       finalize(() => { this.isPanelBusy = false; })
     ).subscribe((e) => {
       pool.poolMeta = e;
