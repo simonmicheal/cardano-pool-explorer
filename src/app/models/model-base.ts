@@ -1,3 +1,4 @@
+//Base model class
 export class ModelBase {
 
     constructor(dataItem?) {
