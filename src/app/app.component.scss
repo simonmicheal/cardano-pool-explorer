@@ -1,0 +1,35 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(26, 108, 225, 0.03);
+}
+
+.navbar-header {
+    border-bottom-color: #e5eefc;
+    box-shadow: 0 0 25px rgb(26 108 225 / 10%);
+}
+
+.card{
+    margin: 1em 0 1em 0 !important;
+}
+
+.pool-accordion .btn-link {
+    width: 100%;
+    text-decoration-line: none;
+}
+
+.footer {
+    border-top-color: transparent;
+    box-shadow: 0 0 25px rgb(26 108 225 / 10%);
+    font-size: 10px;
+    letter-spacing: .3px;
+    padding: 15px 25px;
+    background-color: #fafbfc;
+    color: #637388;
+    border-top: 1px solid rgba(72,94,144,0.16);
+    text-transform: uppercase;
+    display: none;
+}
+
+
+
