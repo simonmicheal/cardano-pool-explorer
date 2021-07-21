@@ -1,12 +1,8 @@
+## Demo: Cardano Pool explorer
 
+This repository provides a demo application to display pools built using  *Blockfrost.io*, Cardano API-as-a-Service.
 
-<img src="https://blockfrost.io/images/logo.svg" align="left" height="30" /><br>
-
-## Demo: Asset explorer
-
-This repository provides a demo application build on top of *Blockfrost.io*, Cardano API-as-a-Service.
-
-You can see the demo itself running on [cardano-tokens.com](https://cardano-tokens.com) or you can run your own if you do not trust our funny accents.
+You can see the demo itself running on [cardano-tokens.com](https://cardano-tokens.com).
 
 ### Before you start
 
@@ -20,30 +16,11 @@ Login to the [blockfrost.io](https://blockfrost.io). Create a project and get yo
 
 Once you have it, rename `.env.example` → `.env` and insert your API key.
 
-
 ### Run locally
 
 ```bash
 $ yarn
 $ yarn dev
 ```
-
-Go to http://localhost:3000/.
-
-
-### Run inside docker
-
-Build the docker image.
-
-```bash
-$ docker build -t blockfrost-demo-asset-explorer .
-```
-
-Run the application container.
-
-```bash
-$ docker run -dp 3000:3000 blockfrost-demo-asset-explorer:latest
-```
-
-Go to http://localhost:3000/ and enjoy.
+Go or to http://localhost:3000/ and enjoy.
 
