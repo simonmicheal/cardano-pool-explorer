@@ -2,11 +2,11 @@
 
 This repository provides a demo application to display pools built using  *Blockfrost.io*, Cardano API-as-a-Service.
 
-You can see the demo itself running on [cardano-tokens.com](https://cardano-tokens.com).
+You can see the demo itself running on [cardano-pool-explorer](https://simonmicheal.github.io/cardano-pool-explorer/).
 
 ### Before you start
 
-Make sure you have downloaded and installed [Node.js LTS](https://nodejs.org/en/download/), [Yarn](https://yarnpkg.com/lang/en/docs/install/) and git or just run `nix-shell` if you are using NixOS.
+You can change the API Key in config.json
 
 Login to the [blockfrost.io](https://blockfrost.io). Create a project and get your API key.
 
@@ -14,13 +14,14 @@ Login to the [blockfrost.io](https://blockfrost.io). Create a project and get yo
 <br/>
 <br/>
 
-Once you have it, rename `.env.example` → `.env` and insert your API key.
+Once you have it insert your API key in config.json
 
 ### Run locally
 
-```bash
-$ yarn
-$ yarn dev
+```
+ng i
+ng build 
+ng serve --open
 ```
 Go or to https://simonmicheal.github.io/cardano-pool-explorer/ and enjoy.
 
