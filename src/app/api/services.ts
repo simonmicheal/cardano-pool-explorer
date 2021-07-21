@@ -1,11 +1,15 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, Injector } from "@angular/core";
 import { DataServiceBase } from "./data-service-base";
 import { catchError, map } from "rxjs/operators";
 import { ConfigurationService } from "../services/configuration.service";
 import { PoolModel } from "../models/pool-model";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbdModalContent } from "../components/modal.component";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class ExplorerService extends DataServiceBase {
 
     api: string = 'https://cardano-mainnet.blockfrost.io/api/v0';
@@ -14,8 +18,8 @@ export class ExplorerService extends DataServiceBase {
         headers: HttpHeaders;
     };
 
-    constructor(private http: HttpClient, private configService: ConfigurationService) {
-        super();
+    constructor(private http: HttpClient, private configService: ConfigurationService,private inject: Injector) {
+        super(inject);
 
         //Add the project id to the http headers
         let httpHeader: HttpHeaders = new HttpHeaders().set('project_id', this.configService.configuration.project_id);
