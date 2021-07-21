@@ -11,6 +11,7 @@ import { PoolModel } from './models/pool-model';
 })
 export class AppComponent {
 
+  //Collection of pools
   pools: PoolModel[] = [];
   isCollapsed = false;
 
@@ -26,6 +27,7 @@ export class AppComponent {
   constructor(private svc: ExplorerService) { }
 
   ngOnInit(): void {
+    //Get pools passing true to reset
     this.GetPools(true);
   }
 
