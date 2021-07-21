@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cardano-wallet": {
+    "cardano-pool-explorer": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cardano-wallet",
+            "outputPath": "dist/cardano-pool-explorer",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "cardano-wallet:build:production"
+              "browserTarget": "cardano-pool-explorer:build:production"
             },
             "development": {
-              "browserTarget": "cardano-wallet:build:development"
+              "browserTarget": "cardano-pool-explorer:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cardano-wallet:build"
+            "browserTarget": "cardano-pool-explorer:build"
           }
         },
         "test": {
@@ -106,5 +106,5 @@
       }
     }
   },
-  "defaultProject": "cardano-wallet"
+  "defaultProject": "cardano-pool-explorer"
 }
