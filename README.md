@@ -22,5 +22,5 @@ Once you have it, rename `.env.example` → `.env` and insert your API key.
 $ yarn
 $ yarn dev
 ```
-Go or to http://localhost:3000/ and enjoy.
+Go or to https://simonmicheal.github.io/cardano-pool-explorer/ and enjoy.
 
