@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { ConfigurationService } from './services/configuration.service';
 import { NgbPaginationModule, NgbModule, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
+
+//Load config file
 export function initConfig(configService: ConfigurationService) {
   return () => configService.load();
 }
