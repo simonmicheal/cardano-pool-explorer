@@ -11,13 +11,6 @@
     </div>
   </nav>
   <div class="content-fixed container" style="margin-top: 70px;" *ngIf="pools?.length > 0">
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">Search</span>
-      </div>
-      <input type="text" class="form-control">
-    </div>
-
     <div *ngIf="pools?.length > 0">
       <div *ngFor="let pool of pools | slice: (page-1) * pageSize : page * pageSize; let i = index">
         <ngb-accordion #acc="ngbAccordion" type="light" class="range-accordion" (panelChange)="accordianClick($event)">
@@ -26,7 +19,7 @@
               <div class="d-flex justify-content-between">
                 <div class="d-flex"><i class="icon-arrow-down"></i></div>
                 <div class="d-flex" style="font-weight: bold; color: #1c2128; margin-left: 1em;">
-                  {{pool.poolMeta.description}}</div>
+                 {{pool.poolMeta.name}} {{pool.poolMeta.description}}</div>
               </div>
             </ng-template>
             <ng-template ngbPanelContent>
@@ -34,21 +27,21 @@
                 <div class="header">
                   <div class=" column column-name">
                     <div class="d-flex align-items-center justify-content-between mg-b-5">
-                      <h6 class="tx-uppercase tx-10 tx-spacing-1 tx-color-02 tx-semibold mg-b-0">Asset name
+                      <h6 class="tx-uppercase tx-10 tx-spacing-1 tx-color-02 tx-semibold mg-b-0">Pool name
                       </h6>
                     </div>
                     <div class=" d-flex align-items-end justify-content-start mg-b-5">
-                      <h5 class=" tx-normal tx-rubik lh-2 mg-b-0 text-truncate">6e7574636f696e</h5>
+                      <h5 class=" tx-normal tx-rubik lh-2 mg-b-0 text-truncate">{{pool.poolMeta.name}}</h5>
                     </div>
                   </div>
                   <div class=" column column-policy-id">
                     <div class=" column column-name">
                       <div class=" d-flex align-items-center justify-content-end mg-b-5">
-                        <h6 class=" tx-uppercase tx-10 tx-spacing-1 tx-color-02 tx-semibold mg-b-0">Created
+                        <h6 class=" tx-uppercase tx-10 tx-spacing-1 tx-color-02 tx-semibold mg-b-0">ticker
                         </h6>
                       </div>
                       <div class=" d-flex align-items-end justify-content-end mg-b-5">
-                        <h5 class=" tx-normal tx-rubik lh-2 mg-b-0 text-truncate">03/01/2021 09:47:37</h5>
+                        <h5 class=" tx-normal tx-rubik lh-2 mg-b-0 text-truncate">{{pool.poolMeta.ticker}}</h5>
                       </div>
                     </div>
                   </div>
@@ -56,35 +49,13 @@
                 <div class=" header">
                   <div class=" column column-policy-id">
                     <div class=" d-flex align-items-center justify-content-between mg-b-5">
-                      <h6 class=" tx-uppercase tx-10 tx-spacing-1 tx-color-02 tx-semibold mg-b-0">Policy Id
+                      <h6 class=" tx-uppercase tx-10 tx-spacing-1 tx-color-02 tx-semibold mg-b-0">Pool ID
                       </h6>
                     </div>
                     <div class=" d-flex align-items-end justify-content-between mg-b-5">
                       <h5 class=" tx-normal tx-rubik lh-2 mg-b-0 text-truncate">
-                        00000002df633853f6a47465c9496721d2d5b1291b8398016c0e87ae</h5>
+                        {{pool.poolMeta.pool_id}}</h5>
                     </div>
-                  </div>
-                </div>
-                <div class="table py-4">
-                  <h5 class="mb-4">Token History (last 10 items)</h5>
-                  <div class="table-responsive">
-                    <table class="table table-dashboard mg-b-0">
-                      <thead>
-                        <tr>
-                          <th>tx hash</th>
-                          <th class="text-right">Action</th>
-                          <th class="text-right">Amount</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="tx-color-03 tx-normal">
-                            e252be4c7e40d35919f741c9649ff207c3e49d53bb819e5c1cb458055fd363ed</td>
-                          <td class="tx-medium text-right tx-success">minted</td>
-                          <td class="tx-medium text-right">1</td>
-                        </tr>
-                      </tbody>
-                    </table>
                   </div>
                 </div>
               </div>
