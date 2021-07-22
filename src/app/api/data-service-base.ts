@@ -19,6 +19,7 @@ export class DataServiceBase {
     */
     handleGenericHttpError(error: HttpErrorResponse) {
 
+        //Added a static injector, the constructor did not seem to load the service
         let modalService = DataServiceBase.inject.get(NgbModal);
 
         if (error.status === 500) {
