@@ -2,7 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { NgbAccordion } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
+import { NetworkService } from './api/network-service';
 import { ExplorerService } from './api/services';
+import { INetwork } from './models/network-data.model';
 import { PoolModel } from './models/pool-model';
 
 @Component({
@@ -14,6 +16,10 @@ export class AppComponent {
 
   //Collection of pools
   pools: PoolModel[] = [];
+
+  //Collection of network network information
+  network: INetwork;
+
   isCollapsed = false;
 
   isBusy: boolean;
@@ -28,11 +34,30 @@ export class AppComponent {
 
   $destroy = new Subject();
 
-  constructor(private svc: ExplorerService) { }
+  constructor(private svc: ExplorerService, private svcNetwork: NetworkService) { }
 
   ngOnInit(): void {
+
+    //Get network information
+    this.NetworkService();
+
     //Get pools passing true to reset
     this.GetPools(true);
+  }
+
+  private NetworkService() {
+
+    this.isBusy = true;
+
+    //Subscription for retreiving pool data
+    this.svcNetwork.getNetworkInformation().pipe(
+      takeUntil(this.$destroy),
+      finalize(() => { this.isBusy = false; })
+    ).subscribe((e:any) => {
+      //store the network in memory
+      this.network = e;
+      this.network.data.cardano.currentEpoch.blocksCount
+    });
   }
 
   private GetPools(reset: boolean) {
@@ -74,8 +99,8 @@ export class AppComponent {
     //Add pool-id to array and note open or close
     this.openById[event.panelId] = event.nextState;
 
-    if(event.nextState)
-    this.getPool(event.panelId);
+    if (event.nextState)
+      this.getPool(event.panelId);
 
   }
 

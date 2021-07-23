@@ -10,7 +10,15 @@
       </ul>
     </div>
   </nav>
-  <div class="content-fixed container" style="margin-top: 70px;" *ngIf="pools?.length > 0">
+  <div class="content-fixed container network-info" *ngIf="network">
+    <span class="header">Network Info</span>
+    <span class="line">Network Block :</span><span>{{network.data.cardano.tip.number | number}}</span>
+    <span class="line">Network Slot :</span><span>{{network.data.cardano.tip.slotNo | number}}</span>
+    <span class="line">Current Epoch :</span><span>{{network.data.cardano.currentEpoch.number}}</span>
+    <span class="line">Ends In :</span><span></span>
+  </div>
+
+  <div class="content-fixed container" style="margin-top: 1em;" *ngIf="pools?.length > 0">
     <div *ngIf="pools?.length > 0">
       <div *ngFor="let pool of pools | slice: (page-1) * pageSize : page * pageSize; let i = index">
         <ngb-accordion #acc="ngbAccordion" type="light" class="range-accordion" (panelChange)="accordianClick($event)">

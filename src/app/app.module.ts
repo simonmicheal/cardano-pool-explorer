@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ConfigurationService } from './services/configuration.service';
 import { NgbPaginationModule, NgbAccordionModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalContent } from './components/modal.component';
+import { GraphQLModule } from './graphql.module';
 
 //Load config file
 export function initConfig(configService: ConfigurationService) {
@@ -23,7 +24,8 @@ export function initConfig(configService: ConfigurationService) {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModalModule
+    NgbModalModule,
+    GraphQLModule
   ],
   exports: [NgbdModalContent],
   providers: [{
