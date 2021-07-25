@@ -3,7 +3,7 @@ import { Injectable, Injector } from "@angular/core";
 import { DataServiceBase } from "./data-service-base";
 import { catchError, map } from "rxjs/operators";
 import { ConfigurationService } from "../services/configuration.service";
-import { PoolModel } from "../models/pool-model";
+import { PoolMetaModel, PoolModel } from "../models/pool-model";
 
 @Injectable({
     providedIn: 'root',
@@ -37,7 +37,7 @@ export class ExplorerService extends DataServiceBase {
         return this.http.get(`${this.api}/pools?page=${page}&count=${100}&order=asc`, this.httpOptions)
             .pipe(
                 catchError(this.handleGenericHttpError),
-                map((e: any) => {
+                map((e: Array<PoolModel>) => {
                     return e.map((x) => new PoolModel(x));
                 }));
     }
@@ -51,7 +51,7 @@ export class ExplorerService extends DataServiceBase {
         //request to get metadata about the pool
         return this.http.get(`${this.api}/pools/${pool.poolId}/metadata`, this.httpOptions)
             .pipe(catchError(this.handleGenericHttpError),
-                map((e: any) => {
+                map((e: PoolMetaModel) => {
                     return e;
                 }));
     }
