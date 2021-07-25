@@ -30,6 +30,18 @@
     align-items: center;
 }
 
+.network-info{
+    display: flex;
+    flex-direction:column;
+    .header {
+        font-weight: bold;
+    }
+    .line{
+        font-size: 0.8em;
+        line-height: 1.6em;
+    }
+}
+
 .footer {
     border-top-color: transparent;
     box-shadow: 0 0 25px rgb(26 108 225 / 10%);
