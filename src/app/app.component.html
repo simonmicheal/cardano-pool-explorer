@@ -12,10 +12,11 @@
   </nav>
   <div class="content-fixed container network-info" *ngIf="network">
     <span class="header">Network Info</span>
-    <span class="line">Network Block :</span><span>{{network.data.cardano.tip.number | number}}</span>
-    <span class="line">Network Slot :</span><span>{{network.data.cardano.tip.slotNo | number}}</span>
-    <span class="line">Current Epoch :</span><span>{{network.data.cardano.currentEpoch.number}}</span>
-    <span class="line">Ends In :</span><span></span>
+    <span class="line">Network Block : <span class="value">{{network.data.cardano.tip.number | number}}</span></span>
+    <span class="line">Network Slot : <span class="value">{{network.data.cardano.tip.slotNo | number}}</span></span>
+    <span class="line">Current Epoch : <span class="value">{{network.data.cardano.currentEpoch.number}}</span></span>
+    <span class="line">Started At : <span class="value">{{network.data.cardano.currentEpoch.startedAt | date:'EEEE, MMMM d, y, h:mm:ss a zzzz'}}</span></span>
+    <span class="line">Ends At : <span class="value">{{epochEndIns() | date:'EEEE, MMMM d, y, h:mm:ss a zzzz'}}</span></span>
   </div>
 
   <div class="content-fixed container" style="margin-top: 1em;" *ngIf="pools?.length > 0">

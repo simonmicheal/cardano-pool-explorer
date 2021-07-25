@@ -1,11 +1,12 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable, Injector } from "@angular/core";
 import { Apollo } from "apollo-angular";
 import gql from 'graphql-tag';
-import { catchError, map, shareReplay } from "rxjs/operators";
+import { catchError, map } from "rxjs/operators";
 import { INetwork } from "../models/network-data.model";
 import { DataServiceBase } from "./data-service-base";
 
+//Graph QL query 
 const GET_NETWORK_INFORMATION = gql`
 {
     cardano {
@@ -35,26 +36,11 @@ export class NetworkService extends DataServiceBase {
     * Get network information
    */
     getNetworkInformation() {
-
         //request to get network information using Graph QL
         return this.apollo.subscribe<INetwork>({
             query: GET_NETWORK_INFORMATION,
-        }).pipe(catchError(this.handleGenericHttpError));
-            
-        //Graph QL query
-        // const query = `
-        // query: {
-        //     cardano {
-        //         tip {
-        //           number
-        //           slotNo
-        //         }
-        //         currentEpoch {
-        //           number
-        //           startedAt
-        //           blocksCount
-        //         }
-        //       }
-        // }`;
+        }).pipe(catchError(this.handleGenericHttpError),
+        map((e: any) => {
+            return e as INetwork; }));
     }
 }
