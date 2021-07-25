@@ -53,11 +53,20 @@ export class AppComponent {
     this.svcNetwork.getNetworkInformation().pipe(
       takeUntil(this.$destroy),
       finalize(() => { this.isBusy = false; })
-    ).subscribe((e:any) => {
-      //store the network in memory
+    ).subscribe((e: INetwork) => {
+      //store the network information in memory
       this.network = e;
-      this.network.data.cardano.currentEpoch.blocksCount
     });
+  }
+
+
+  //Return the epoch countdown 
+  epochEndIns() {
+    if (this.network){
+      debugger;
+      let epoch = new Date(this.network.data.cardano.currentEpoch.startedAt).getTime() + 5 * 24 * 60 * 60 * 1000;
+      return epoch
+    }
   }
 
   private GetPools(reset: boolean) {
